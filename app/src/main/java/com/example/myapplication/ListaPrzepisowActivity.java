@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class ListaPrzepisowActivity extends AppCompatActivity {
 
@@ -26,14 +28,27 @@ public class ListaPrzepisowActivity extends AppCompatActivity {
             return insets;
         });
         String kategoriaPrzepisu = getIntent().getStringExtra("KATEGORIA");
-        Toast.makeText(this, kategoriaPrzepisu, Toast.LENGTH_SHORT).show();
+
+
+        TextView textView2 = findViewById(R.id.textView2);
+        textView2.setText(kategoriaPrzepisu);
+
 
         ArrayList<Przepis> przepisy = RepozytoriumPrzepisow.getPrzepisy();
+
+        ArrayList<Przepis> przepisyKategoria = new ArrayList<>();
+        for (Przepis przepis : przepisy) {
+            if (przepis.getKategoria().equals(kategoriaPrzepisu)) {
+                przepisyKategoria.add(przepis);
+            }
+        }
+
+
         ListView listView = findViewById(R.id.listViewPrzepis);
         ArrayAdapter<Przepis> arrayAdapter = new ArrayAdapter<>(
                 ListaPrzepisowActivity.this,
                 android.R.layout.simple_list_item_1,
-                przepisy
+                przepisyKategoria
         );
         listView.setAdapter(arrayAdapter);
     }
