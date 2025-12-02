@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 view.setBackgroundColor(Color.GRAY);
                 Toast.makeText(MainActivity.this, "Wybrano kategorie: " + i, Toast.LENGTH_SHORT).show();
+
+
+                Intent intent = new Intent(MainActivity.this, ListaPrzepisowActivity.class);
+                String kategoria = adapterView.getItemAtPosition(i).toString();
+                intent.putExtra("KATEGORIA",kategoria);
+
+                startActivity(intent);
+
+
             }
         });
     }
