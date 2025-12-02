@@ -65,8 +65,6 @@ public class Przepis {
 
     @Override
     public String toString() {
-        return "Przepis{" +
-                "nazwaPrzepisu='" + nazwaPrzepisu + '\'' +
-                '}';
+        return nazwaPrzepisu;
     }
 }
