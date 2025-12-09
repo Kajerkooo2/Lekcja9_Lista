@@ -7,12 +7,17 @@ public class Przepis {
     private String skladniki;
     private String opis;
 
+    private int idPrzepisu;
+
+    private static int licznikPrzepisow = 0;
     public Przepis(String nazwaPrzepisu) {
         this.nazwaPrzepisu = nazwaPrzepisu;
         kategoria = "Desery";
         idObrazka = R.drawable.chocolate;
         skladniki = "";
         opis = "";
+        licznikPrzepisow++;
+        idPrzepisu = licznikPrzepisow;
     }
 
     public Przepis(String nazwaPrzepisu, String kategoria, int idObrazka, String skladniki, String opis) {
@@ -21,6 +26,8 @@ public class Przepis {
         this.idObrazka = idObrazka;
         this.skladniki = skladniki;
         this.opis = opis;
+        licznikPrzepisow++;
+        idPrzepisu = licznikPrzepisow;
     }
 
     public String getNazwaPrzepisu() {
@@ -66,5 +73,21 @@ public class Przepis {
     @Override
     public String toString() {
         return nazwaPrzepisu;
+    }
+
+    public int getIdPrzepisu() {
+        return idPrzepisu;
+    }
+
+    public void setIdPrzepisu(int idPrzepisu) {
+        this.idPrzepisu = idPrzepisu;
+    }
+
+    public static int getLicznikPrzepisow() {
+        return licznikPrzepisow;
+    }
+
+    public static void setLicznikPrzepisow(int licznikPrzepisow) {
+        Przepis.licznikPrzepisow = licznikPrzepisow;
     }
 }

@@ -20,6 +20,16 @@ public class RepozytoriumPrzepisow {
         return przepisy;
     }
 
+    public static Przepis zwrocPrzepisoId(int id){
+        generujPrzepisy();
+        for ( Przepis przepis: przepisy){
+            if(przepis.getIdPrzepisu() == id){
+                return przepis;
+            }
+        }
+        return null;
+    }
+
     public static ArrayList<Przepis> zwrocPrzepisyKategori(String kategoria){
 
         ArrayList<Przepis> przepisyZKategori = new ArrayList<>();
