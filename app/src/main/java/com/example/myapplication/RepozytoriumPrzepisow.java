@@ -7,6 +7,9 @@ public class RepozytoriumPrzepisow {
     private static ArrayList<Przepis> przepisy;
 
     private static void generujPrzepisy() {
+
+        if (przepisy != null) return;
+        Przepis.setLicznikPrzepisow(0);
         przepisy = new ArrayList<>();
         przepisy.add(new Przepis("Pizza", "Kuchnia Wloska", R.drawable.pizza, "maka, drodze, woda, sol, pomidory, ser", "wyrosnij drodze, wyrob ciasto, dodaj skladniki na gore"));
         przepisy.add(new Przepis("Bento Box", "Kuchnia Japonska", R.drawable.bento_box, "ryz, niggiri, sos rybny, sos sojowy, kurczak, maka, przyprawy", "ugotuj ryz w szybkowarze, dodaj sos sojowy, kurczaka pokroj i zapanieruj"));
@@ -22,16 +25,16 @@ public class RepozytoriumPrzepisow {
 
     public static Przepis zwrocPrzepisoId(int id){
         generujPrzepisy();
-        for ( Przepis przepis: przepisy){
+        for (Przepis przepis: przepisy){
             if(przepis.getIdPrzepisu() == id){
                 return przepis;
             }
         }
+
         return null;
     }
 
     public static ArrayList<Przepis> zwrocPrzepisyKategori(String kategoria){
-
         ArrayList<Przepis> przepisyZKategori = new ArrayList<>();
         generujPrzepisy();
         for (Przepis przepis : przepisy) {

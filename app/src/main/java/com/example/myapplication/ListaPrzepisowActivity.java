@@ -55,7 +55,8 @@ public class ListaPrzepisowActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Przepis przepis = przepisy.get(i);
                 Intent intent = new Intent(ListaPrzepisowActivity.this, PrzepisActivity.class);
-
+                int idTegoPrzepisu = przepis.getIdPrzepisu();
+                intent.putExtra("ID", idTegoPrzepisu);
                 startActivity(intent);
             }
         });
