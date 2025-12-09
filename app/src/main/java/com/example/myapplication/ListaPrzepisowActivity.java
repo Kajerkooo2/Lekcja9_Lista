@@ -34,21 +34,16 @@ public class ListaPrzepisowActivity extends AppCompatActivity {
         textView2.setText(kategoriaPrzepisu);
 
 
-        ArrayList<Przepis> przepisy = RepozytoriumPrzepisow.getPrzepisy();
+        ArrayList<Przepis> przepisy = RepozytoriumPrzepisow.zwrocPrzepisyKategori(kategoriaPrzepisu);
 
-        ArrayList<Przepis> przepisyKategoria = new ArrayList<>();
-        for (Przepis przepis : przepisy) {
-            if (przepis.getKategoria().equals(kategoriaPrzepisu)) {
-                przepisyKategoria.add(przepis);
-            }
-        }
+
 
 
         ListView listView = findViewById(R.id.listViewPrzepis);
         ArrayAdapter<Przepis> arrayAdapter = new ArrayAdapter<>(
                 ListaPrzepisowActivity.this,
                 android.R.layout.simple_list_item_1,
-                przepisyKategoria
+                przepisy
         );
         listView.setAdapter(arrayAdapter);
     }
